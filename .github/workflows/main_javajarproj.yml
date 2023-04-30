@@ -30,28 +30,28 @@ jobs:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'
 
-deploy:
-   runs-on: ubuntu-latest
-   needs: build
-   environment:
-    name: 'Production'
-    url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-  
-   steps:
-     - name: Download artifact from build job
-       uses: actions/download-artifact@v2
-       with:
-        name: java-app
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: java-app
 
-     - name: List JAR files
-       run: |
-        ls -R ${{ github.workspace }}/target/*.jar
+      - name: List JAR files
+        run: |
+          ls -R ${{ github.workspace }}/target/*.jar
 
-     - name: Deploy JAR files to Azure Web App
-       id: deploy-to-webapp
-       uses: azure/webapps-deploy@v2
-       with:
-        app-name: 'javajarproj'
-        slot-name: 'Production'
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0F7A020D222F42679E7FEE1D89BF4608 }}
-        package: ${{ steps.deploy-to-webapp.outputs.jar-files }}
+      - name: Deploy JAR files to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'javajarproj'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0F7A020D222F42679E7FEE1D89BF4608 }}
+          package: ${{ steps.deploy-to-webapp.outputs.jar-files }}
