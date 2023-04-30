@@ -23,6 +23,14 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+        
+        
+      - name: Display target directory
+        run: ls target
+        
+      - name: List workspace contents
+        run: ls -R ${{ github.workspace }}
+
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -43,9 +51,7 @@ jobs:
         with:
           name: java-app
 
-      - name: List JAR files
-        run: |
-          ls -R ${{ github.workspace }}/target/*.jar
+
 
       - name: Deploy JAR files to Azure Web App
         id: deploy-to-webapp
