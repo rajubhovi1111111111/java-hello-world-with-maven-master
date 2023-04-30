@@ -63,5 +63,5 @@ jobs:
         with:
           app-name: 'javajarproj'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0F7A020D222F42679E7FEE1D89BF4608 }}
+          publish-profile: ${{secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0F7A020D222F42679E7FEE1D89BF4608}}
           package: ${{ github.workspace }}/jb-hello-world-maven-0.2.0.jar
