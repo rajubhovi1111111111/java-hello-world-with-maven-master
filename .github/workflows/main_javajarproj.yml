@@ -52,7 +52,7 @@ jobs:
           name: java-app
           
       - name: List artifacts
-        run: ls -R ${{ github.workspace }}/java-hello-world-with-maven-master
+        run: ls -R ${{ github.workspace }}
 
 
 
