@@ -29,6 +29,9 @@ jobs:
 
       - name: Run Tests with Code Coverage
         run: mvn test jacoco:report
+        
+      - name: Dependency Test
+        run: mvn dependency:analyze
 
       - name: Build with Maven
         run: mvn clean install
