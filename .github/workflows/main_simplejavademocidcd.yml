@@ -50,4 +50,4 @@ jobs:
           app-name: 'simplejavademocidcd'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_21760B668E0448BA9054045F0C05C834 }}
-          package: '*.jar'
+          package: ${{ github.workspace }}/jb-hello-world-maven-0.2.0.jar
