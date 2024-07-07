@@ -1,28 +1,14 @@
-# Stage 1: Build the application
-FROM maven:3.8.1-openjdk-11-slim AS build
+# Use an official OpenJDK runtime as the base image for running the application
+FROM eclipse-temurin:17-jdk-alpine
 
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy the pom.xml and the project source code
-COPY pom.xml .
-COPY src ./src
+# Copy the jar file from the build stage
+COPY  target/jb-hello-world-maven-0.2.0.jar jb-hello-world-maven-0.2.0.jar
 
-# Build the application
-RUN mvn clean package
-
-# Stage 2: Create the runtime image
-FROM openjdk:11-jre-slim
-
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy the application JAR file from the build stage
-COPY --from=build /app/target/myapp.jar /app/myapp.jar
-
-# Expose the port your application runs on
+# Expose the port the application runs on
 EXPOSE 8080
 
-# Command to run the application
-ENTRYPOINT ["java", "-jar", "myapp.jar"]
-
+# Run the jar file
+ENTRYPOINT ["java", "-jar", "jb-hello-world-maven-0.2.0.jar"]
