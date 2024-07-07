@@ -21,7 +21,7 @@ jobs:
       run: mvn clean package
 
     - name: Inspect JAR Contents
-      run: jar tf target/github-action-maven-tutorial-1.0-SNAPSHOT-jar-with-dependencies.jar
+      run: jar tf target/*.jar
 
 
     - name: Build Docker image
