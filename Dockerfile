@@ -11,4 +11,4 @@ COPY  target/jb-hello-world-maven-0.2.0.jar jb-hello-world-maven-0.2.0.jar
 EXPOSE 8080
 
 # Run the jar file
-ENTRYPOINT ["java", "-jar", "jb-hello-world-maven-0.2.0.jar"]
+CMD java -jar jb-hello-world-maven-0.2.0.jar && sleep infinity
