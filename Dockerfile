@@ -22,3 +22,4 @@ COPY --from=build /app/target/jb-hello-world-maven-0.2.0.jar /app/jb-hello-world
 
 # Specify the entrypoint command to run the application
 ENTRYPOINT ["java", "-cp", "jb-hello-world-maven-0.2.0.jar", "hello.HelloWorld"]
+EXPOSE 8080
