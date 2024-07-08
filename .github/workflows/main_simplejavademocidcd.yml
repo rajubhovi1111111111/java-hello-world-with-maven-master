@@ -55,4 +55,4 @@ jobs:
         port: 22
         script: |
           sudo docker load -i /home/ubuntu/myapp.tar/myapp.tar
-          sudo docker run -dit --name myapp -p 8080:8080 myapp:latest
+          sudo docker run -dit --name myapp -p 80:8080 myapp:latest
