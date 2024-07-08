@@ -18,7 +18,7 @@ FROM openjdk:8-jre
 WORKDIR /app
 
 # Copy the built jar file from the Maven build stage
-COPY --from=build /app/target/jb-hello-world-maven-0.2.0.jar /app/jb-hello-world-maven-0.2.0.jar
+COPY --from=build /app/target/jb-hello-world-maven-0.2.0.jar ./jb-hello-world-maven-0.2.0.jar
 
 # Specify the entrypoint command to run the application
 ENTRYPOINT ["java", "-cp", "jb-hello-world-maven-0.2.0.jar", "hello.HelloWorld"]
